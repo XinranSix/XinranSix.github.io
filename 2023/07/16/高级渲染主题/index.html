@@ -1,0 +1,439 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>高级渲染主题 | 光线</title><meta name="author" content="Yao J"><meta name="copyright" content="Yao J"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简单介绍下一些较高级的渲染方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高级渲染主题">
+<meta property="og:url" content="http://example.com/2023/07/16/%E9%AB%98%E7%BA%A7%E6%B8%B2%E6%9F%93%E4%B8%BB%E9%A2%98/index.html">
+<meta property="og:site_name" content="光线">
+<meta property="og:description" content="简单介绍下一些较高级的渲染方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/title1.png">
+<meta property="article:published_time" content="2023-07-16T02:23:05.000Z">
+<meta property="article:modified_time" content="2023-07-16T02:23:51.569Z">
+<meta property="article:author" content="Yao J">
+<meta property="article:tag" content="计算机图形学">
+<meta property="article:tag" content="高级渲染">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/title1.png"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/2023/07/16/%E9%AB%98%E7%BA%A7%E6%B8%B2%E6%9F%93%E4%B8%BB%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章已","messageNext":"天未更新，文字内容或许已不再使用于现在的情况。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '高级渲染主题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-16 10:23:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/title1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="光线"><span class="site-name">光线</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">高级渲染主题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-16T02:23:05.000Z" title="发表于 2023-07-16 10:23:05">2023-07-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-16T02:23:51.569Z" title="更新于 2023-07-16 10:23:51">2023-07-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/GAMES-101/">GAMES 101</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="高级渲染主题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="高级光线传播">高级光线传播</h2>
+<p>高级光线传播方法有如下几种：</p>
+<ul>
+<li>
+<p>无偏光线传播方法</p>
+<ul>
+<li>
+<p>Bidirectional path tracing（BDPT）：双向路径追踪；</p>
+</li>
+<li>
+<p>Metropolis light transport（MLT）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>有偏光线传播方法</p>
+<ul>
+<li>
+<p>Photon mapping：光子映射；</p>
+</li>
+<li>
+<p>Vertex connection and merging（VCM）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Instant radiosity（VPL / many light methods）</p>
+</li>
+</ul>
+<h3 id="有偏与无偏蒙特卡洛估计">有偏与无偏蒙特卡洛估计</h3>
+<p><strong>无偏</strong>（Unbiased）蒙塔卡洛估计指的是不论我们选取多少样本进行估计，得到的期望值和正确值一样。</p>
+<p><strong>有偏</strong>（Biased）蒙特卡洛估计指的是如果我们取样后得到的估计值与要预测的真实值是有偏差的，那么我们认为这是一个有偏估计。当我们采样足够大的的时候，有偏估计也可以收敛到正确值，这说明了有偏估计具有一致性（consistent）。</p>
+<h3 id="Bidirectional-Path-Tracing">Bidirectional Path Tracing</h3>
+<p>BDPT 指的是我们分别从光源和眼睛（摄像机）引出半路径，并将半路径的终点连接起来形成路径。这种方法非常适用于光源出光线比较复杂的情况。但是实现困难并且渲非常慢，是一种无偏的估计。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231392207-a5d78f12-1277-461f-a1ae-9d554c986e50.png" alt="Img" style="zoom:75%;" />
+</center>
+<h3 id="Metropolis-Light-Transport">Metropolis Light Transport</h3>
+<p>MLT 使用使用马尔可夫链的方法进行采样：从当前采样点依据某种 PDF 跳到下一个采样点。</p>
+<p>这种采样方式可以很容易的采样到某一个采样的临近点。其主要思想是，当一条路径可以到达光源时，那么临近的采样也应该容易到达光源。非常适用于困难场景的渲染，尤其是 SDS（Specular-Diffuse-Specular）路径。</p>
+<p>但是很难估计收敛速度，每一个像素的收敛速度也不一样。操作独立，各个像素独立导致画面会比较「脏」，因此很难应用到动画上。MLT 也是无偏估计。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231392172-73920a70-5f9a-49a7-aa35-b991ddf63480.png" alt="Img" style="zoom:75%;" />
+</center>
+<h3 id="Photon-Mapping">Photon Mapping</h3>
+<p>光子映射是一个分为两步的方法。是一种有偏估计。适合于 SDS 路径以及焦散（caustics）材质。</p>
+<ol>
+<li>从光源出发射出光子，当光子反射到漫反射平面时停止，记录光子位置；</li>
+<li>从摄像机射出半路径，直到路径反射到漫反射平面上。</li>
+</ol>
+<p>我们需要通过局部密度估计在计算单位面积内，光子数的多少。那么光子密度越高的地方应当越亮。对于任意一个点，我们选取临近 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个距离最近的光子，那么使用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 处以光子所占的面积 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\Delta A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal">A</span></span></span></span> 就可以得到该就可以得到该<br>
+点的局部密度。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231391911-7372976e-6abb-463e-9728-13bb0b9eedef.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>为什么这是一个有偏的方法？我们 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 太少的话易产生噪声，但是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 太多又会模糊。当我们使用的光子足够多的时候，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\Delta A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal">A</span></span></span></span> 就趋近于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">d</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\mathrm{d} A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathrm">d</span><span class="mord mathnormal">A</span></span></span></span> 因此，只要我们的采样是有限的，得到的密度多少都会有偏差，所以这是一个有偏的估计。但是这是一致的估计。</p>
+<h3 id="Vertex-Connection-and-Merging">Vertex Connection and Merging</h3>
+<p>VCM 是一种结合了双向路径追踪和光子映射的方法。其主要思想是在双向光线追踪中如果半路径的结束点并不在一起但是距离比较近的话可以组合在一起。使用光子映射的方法来组合这些临近的「光子」。是一种有偏估计。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231392925-c6544672-d194-4ef0-af94-0436dc494bbe.png" alt="Img" style="zoom:75%;" />
+</center>
+<h3 id="Instant-Radiosity-IR">Instant Radiosity (IR)</h3>
+<p>IR 最主要的思想是认为被照亮的表面可以当作一个小光源。从光源打出来的地方到一些表面后，到达点就是新的虚拟光源。之后就可以将这些虚拟光源看作光源进行渲染。优点是渲染速度快并且在漫反射场景中表现的很好;缺点是不能很好的处理反射材质。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231393236-81d73aa4-b02d-4d20-97ad-740a54f19f0c.png" alt="Img" style="zoom:75%;" />
+</center>
+<h2 id="高级外观建模（Advanced-Appearance-Modeling）">高级外观建模（Advanced Appearance Modeling）</h2>
+<p>此节会介绍：</p>
+<ul>
+<li>Non-surface models（非表面模型）
+<ul>
+<li>Participating media（散射介质）</li>
+<li>Hair / fur / fiber (BCSDF)（毛发）</li>
+<li>Granular material（颗粒材质）</li>
+</ul>
+</li>
+<li>Surface models（表面模型）
+<ul>
+<li>Translucent material (BSSRDF)</li>
+<li>Cloth（织物）</li>
+<li>Detailed material (non-statistical BRDF)</li>
+</ul>
+</li>
+<li>Procedural appearance</li>
+</ul>
+<h3 id="Non-surface-models">Non-surface models</h3>
+<h4 id="Participating-media">Participating media</h4>
+<p>对于一些散射介质，例如云、雾，我们认为他们是非表面模型。因此他们不存在一个表面，而是由许多散射小颗粒组成的。任何一束光通过散射介质，会发生（部分）吸收或者散射。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231394358-e1607f8e-bcc5-4d0a-9121-328642f409bc.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>我们采用<strong>相位函数</strong>（Phase Function）去描述在某一点光的散射和散射角度的关系。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231408693-9766422c-77ab-4598-8c80-d2e94dc4ec57.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>再渲染散射介质时：</p>
+<ul>
+<li>Randomly choose a direction to bounce;</li>
+<li>Randomly choose a distance to go straight;</li>
+<li>At each ‘shading point’, connect to the light.</li>
+</ul>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231409723-b5066afd-4128-47cb-806f-763d2a5104d3.png" alt="Img" style="zoom:75%;" />
+</center>
+<h4 id="Hair-fur-fiber">Hair / fur / fiber</h4>
+<p>光线与头发的作用不是简单的光线和表面的作用，首先视头发为一个圆柱体。</p>
+<p>在 Kajiya-Kay 模型中，我们认为一束光射到头发上后，头发会将光线散射为一个圆锥。Kajiya-Kay 模型做出来的效果并不好。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231412180-9fe05e93-e566-4cd6-a471-1d787d40e538.png" alt="Img" style="zoom:75%;" />
+</center>
+在 Marschner 模型中，我们认为头发是一个能够透光的「玻璃」，光线应该分为三部分，分别是：
+<ul>
+<li>R：光线直接反射光；</li>
+<li>TT：光线经过两次折射后射出的折射光；</li>
+<li>TRT：光线折射后经过一次介质内反射后的折射光。</li>
+</ul>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231652667-750a6887-2407-4db2-a5dd-e801e5bfc75c.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>以上的模型对于人类的毛发已经有了很好的表现，但是对于动物毛发来说，表现并不好。这是因为动物的毛发并不是单层的结构。动物毛发中包含一层毛髓质（Medulla），因此引入双层模型（Double CylinderModel）来对毛发进行建模。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231653290-aa79bb6a-3fbc-4516-ae93-ef7b7d4b4ef6.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>在这个模型中我们额外增加了两种光：</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mtext>TT</mtext><mtext>s</mtext></msup></mrow><annotation encoding="application/x-tex">\text{TT}^{\text{s}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7376em;"></span><span class="mord"><span class="mord text"><span class="mord">TT</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7376em;"><span style="top:-3.1362em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">s</span></span></span></span></span></span></span></span></span></span></span></span></span>：经过了中间介质的 TT 光线；</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mtext>TRT</mtext><mi>S</mi></msup></mrow><annotation encoding="application/x-tex">\text{TRT}^{S}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9146em;"></span><span class="mord"><span class="mord text"><span class="mord">TRT</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9146em;"><span style="top:-3.1362em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span></span></span></span></span></span></span></span></span>：经过了中间介质的 TRT 光线。</li>
+</ul>
+<p>这样 5 种光线结合在一起得到的毛发会更加的真实。</p>
+<h4 id="Granular-Material">Granular Material</h4>
+<p>粒状材质是由细小的颗粒组成的材质，例如谷物，沙子，调味料等。这样的材质也有程序化的方法进行渲染。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231653886-d78f2d2f-192b-414c-9896-23438306c1b7.png" alt="Img" style="zoom:75%;" />
+</center>
+<h3 id="Surface-models">Surface models</h3>
+<h4 id="Translucent-Material">Translucent Material</h4>
+<p>Translucent 材质指的是能够透光的一些材质，光线可以从一个地方进去并从另一个地方出去。例如玉石，水母都是典型的 Translucent 材质。</p>
+<p>一条光在半透明材质上入射后，出射光的起点并不一定在入射点上（Subsurface Scattering），因此我们需要对 BRDF 进行拓展。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231654420-34b0b24e-347e-4237-9808-46ace086b3ff.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>此时 BDRF 就变成了 BSSDRF，此时我们需要引入新的位置参数，我们不仅要对角度进行积分。BSSDRF 的定义为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mrow><mo fence="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>ω</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>o</mi></msub><mo separator="true">,</mo><msub><mi>ω</mi><mi>o</mi></msub><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">S\left(x_i,\omega_i,x_o,\omega_o\right)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></span></p>
+<p>渲染方程要修正为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>L</mi><mrow><mo fence="true">(</mo><msub><mi>x</mi><mi>o</mi></msub><mo separator="true">,</mo><msub><mi>ω</mi><mi>o</mi></msub><mo fence="true">)</mo></mrow><mo>=</mo><msub><mo>∫</mo><mi>A</mi></msub><msub><mo>∫</mo><msup><mi>H</mi><mn>2</mn></msup></msub><mi>S</mi><mrow><mo fence="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>ω</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>o</mi></msub><mo separator="true">,</mo><msub><mi>ω</mi><mi>o</mi></msub><mo fence="true">)</mo></mrow><msub><mi>L</mi><mi>i</mi></msub><mrow><mo fence="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>ω</mi><mi>i</mi></msub><mo fence="true">)</mo></mrow><mi>cos</mi><mo>⁡</mo><msub><mi>θ</mi><mi>i</mi></msub><mtext> </mtext><mi mathvariant="normal">d</mi><msub><mi>ω</mi><mi>i</mi></msub><mtext> </mtext><mi mathvariant="normal">d</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">L\left(x_o,\omega_o\right) = \int_A\int_{H^2}S\left(x_i,\omega_i,x_o,\omega_o\right) L_i\left(x_i,\omega_i\right) \cos \theta_i \, \mathrm{d} \omega_i \, \mathrm{d} A
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2719em;vertical-align:-0.9119em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:-0.4336em;"><span style="top:-1.7881em;margin-left:-0.4445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9119em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:-0.3895em;"><span style="top:-1.7881em;margin-left:-0.4445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9119em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathrm">d</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathrm">d</span><span class="mord mathnormal">A</span></span></span></span></span></p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231654935-f6524435-3b1d-4841-8983-9760b05cb235.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>我们会等效的认为，一个半透明材质上有一束光摄入相当于在介质的外部和内部各有一个光源。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231655049-ddb0d053-fede-4eb8-9249-2966ac6e11bc.png" alt="Img" style="zoom:75%;" />
+</center>
+<h4 id="Cloth">Cloth</h4>
+<p>织物的制作工艺比较的复杂。首先，多层（Ply）缠绕会变成一根纱（Yarn），多根纱相互缠绕就会变成一根线（Fiber）。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231655321-ee00b9c5-731f-42ec-b68d-2730c42d61ce.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>我们可以使用两种编织工艺，一种是机织（Woven），通过线之间的经纬交叉得到布料，另一种方式是手打（Knitted）的方式，类似于织毛衣的过程。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231655403-f3c94387-5f28-43e7-9d76-da3644c902e9.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>不同的布料有不同的 BDRF，常见的渲染方法有：</p>
+<ul>
+<li>Render as Surface
+<ul>
+<li>Given the weaving pattern, calculate the overall behavior</li>
+<li>Render using a BRDF</li>
+</ul>
+</li>
+<li>Render as Surface</li>
+<li>Render as Participating Media
+<ul>
+<li>Properties of individual fibers &amp; their distribution -&gt; scattering parameters</li>
+<li>Render as a participating medium</li>
+</ul>
+</li>
+<li>Render as Actual Fibers
+<ul>
+<li>Render every fiber explicitly</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>对于天鹅绒材质等布料，使用 BDRF 并不合适。</p>
+</blockquote>
+<h3 id="真实世界模型">真实世界模型</h3>
+<p>现在的渲染器渲染出的画面并不真实，主要原因是这些渲染器过于完美。在实际生活中的物体一般表面都会带有划痕，会让物体表面看起来更真实。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231656315-482c42ab-231f-4d6b-8091-3d889f29ef1d.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>我们可以用微表面模型的发现分布来解决这种情况。我们只需要在微表面模型的分布上加一些噪声，就可以产生带有划痕的效果。但是，在这样的法线分布下，光线很难反射到光源处。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231656429-ac385ac6-7a37-4c8f-ab9f-71b8d21bac22.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>因此，我们的解决方案是，我们对于每一个像素，对应一部分法线分布 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">P</mi><mo>−</mo><mrow><mi mathvariant="normal">N</mi><mi mathvariant="normal">D</mi><mi mathvariant="normal">F</mi></mrow></mrow><annotation encoding="application/x-tex">\mathcal{P}-\mathrm{NDF}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathcal" style="margin-right:0.08222em;">P</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">NDF</span></span></span></span></span>，使用这一部分的法线总体分布进行路径追踪。</p>
+<center>
+    <img src="https://user-images.githubusercontent.com/62458905/231656768-777d08a2-c53f-4706-892f-966484098806.png" alt="Img" style="zoom:75%;" />
+</center>
+<p>此外，目前研究比较前沿的问题还有波动光学（Wave Optics）的渲染。</p>
+<h2 id="程序化生成">程序化生成</h2>
+<p>程序化生成（Procedural Appearance）指的是我们可以不定义一个纹理，而是直接定义一个噪声，通过噪声计算纹理。木纹，陶瓷都可以定制对应的纹理进行程序化的生成。</p>
+<p>不仅可以定义 2 维的噪声，也可以定义 3 维的噪声，在将物体切割时，3 维噪声会将切面的纹理动态地计算出来。</p>
+<p>例如下面这个噪声函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">if</span> <span class="title">noise</span><span class="params">(x, y, z)</span> &gt; threshold:</span></span><br><span class="line"><span class="function">    reflectance =</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	reflectance = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Yao J</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/07/16/%E9%AB%98%E7%BA%A7%E6%B8%B2%E6%9F%93%E4%B8%BB%E9%A2%98/">http://example.com/2023/07/16/%E9%AB%98%E7%BA%A7%E6%B8%B2%E6%9F%93%E4%B8%BB%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">光线</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a><a class="post-meta__tags" href="/tags/%E9%AB%98%E7%BA%A7%E6%B8%B2%E6%9F%93/">高级渲染</a></div><div class="post_share"><div class="social-share" data-image="/img/title1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/16/%E7%9B%B8%E6%9C%BA%E3%80%81%E9%95%9C%E5%A4%B4%E5%92%8C%E5%85%89%E5%9C%BA/" title="相机、镜头和光场"><img class="cover" src="/img/title1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">相机、镜头和光场</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/16/%E9%A2%9C%E8%89%B2%E4%B8%8E%E6%84%9F%E7%9F%A5/" title="颜色与感知"><img class="cover" src="/img/title1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">颜色与感知</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/07/16/%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/" title="光线追踪"><img class="cover" src="/img/title1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-16</div><div class="title">光线追踪</div></div></a></div><div><a href="/2023/07/16/%E5%85%89%E6%A0%85%E5%8C%96/" title="光栅化"><img class="cover" src="/img/title1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-16</div><div class="title">光栅化</div></div></a></div><div><a href="/2023/07/16/%E5%87%A0%E4%BD%95/" title="几何"><img class="cover" src="/img/title1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-16</div><div class="title">几何</div></div></a></div><div><a href="/2023/07/16/%E5%8F%98%E6%8D%A2/" title="变换"><img class="cover" src="/img/title1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-16</div><div class="title">变换</div></div></a></div><div><a href="/2023/07/16/%E5%8A%A8%E7%94%BB/" title="动画"><img class="cover" src="/img/title1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-16</div><div class="title">动画</div></div></a></div><div><a href="/2023/07/16/%E7%9B%B8%E6%9C%BA%E3%80%81%E9%95%9C%E5%A4%B4%E5%92%8C%E5%85%89%E5%9C%BA/" title="相机、镜头和光场"><img class="cover" src="/img/title1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-16</div><div class="title">相机、镜头和光场</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yao J</div><div class="author-info__description">归途也还可爱</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/XinranSix"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%85%89%E7%BA%BF%E4%BC%A0%E6%92%AD"><span class="toc-number">1.</span> <span class="toc-text">高级光线传播</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%81%8F%E4%B8%8E%E6%97%A0%E5%81%8F%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E4%BC%B0%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">有偏与无偏蒙特卡洛估计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bidirectional-Path-Tracing"><span class="toc-number">1.2.</span> <span class="toc-text">Bidirectional Path Tracing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Metropolis-Light-Transport"><span class="toc-number">1.3.</span> <span class="toc-text">Metropolis Light Transport</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Photon-Mapping"><span class="toc-number">1.4.</span> <span class="toc-text">Photon Mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vertex-Connection-and-Merging"><span class="toc-number">1.5.</span> <span class="toc-text">Vertex Connection and Merging</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Instant-Radiosity-IR"><span class="toc-number">1.6.</span> <span class="toc-text">Instant Radiosity (IR)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%A4%96%E8%A7%82%E5%BB%BA%E6%A8%A1%EF%BC%88Advanced-Appearance-Modeling%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">高级外观建模（Advanced Appearance Modeling）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Non-surface-models"><span class="toc-number">2.1.</span> <span class="toc-text">Non-surface models</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Participating-media"><span class="toc-number">2.1.1.</span> <span class="toc-text">Participating media</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hair-fur-fiber"><span class="toc-number">2.1.2.</span> <span class="toc-text">Hair &#x2F; fur &#x2F; fiber</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Granular-Material"><span class="toc-number">2.1.3.</span> <span class="toc-text">Granular Material</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Surface-models"><span class="toc-number">2.2.</span> <span class="toc-text">Surface models</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Translucent-Material"><span class="toc-number">2.2.1.</span> <span class="toc-text">Translucent Material</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cloth"><span class="toc-number">2.2.2.</span> <span class="toc-text">Cloth</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">真实世界模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%8C%96%E7%94%9F%E6%88%90"><span class="toc-number">3.</span> <span class="toc-text">程序化生成</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/16/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="位运算"><img src="/img/title1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="位运算"/></a><div class="content"><a class="title" href="/2023/07/16/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="位运算">位运算</a><time datetime="2023-07-16T02:47:00.000Z" title="发表于 2023-07-16 10:47:00">2023-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/16/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法"><img src="/img/title1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="排序算法"/></a><div class="content"><a class="title" href="/2023/07/16/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法</a><time datetime="2023-07-16T02:45:21.000Z" title="发表于 2023-07-16 10:45:21">2023-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/16/Template/" title="Template"><img src="/img/title1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Template"/></a><div class="content"><a class="title" href="/2023/07/16/Template/" title="Template">Template</a><time datetime="2023-07-16T02:43:52.000Z" title="发表于 2023-07-16 10:43:52">2023-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/16/STL/" title="STL"><img src="/img/title1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STL"/></a><div class="content"><a class="title" href="/2023/07/16/STL/" title="STL">STL</a><time datetime="2023-07-16T02:43:16.000Z" title="发表于 2023-07-16 10:43:16">2023-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/16/OOP/" title="OOP"><img src="/img/title1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OOP"/></a><div class="content"><a class="title" href="/2023/07/16/OOP/" title="OOP">OOP</a><time datetime="2023-07-16T02:42:24.000Z" title="发表于 2023-07-16 10:42:24">2023-07-16</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/title1.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Yao J</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://xinransix.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://comment-umber.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, {"emoji":["https://unpkg.com/@waline/emojis@1.1.0/alus","https://unpkg.com/@waline/emojis@1.1.0/bilibili","https://unpkg.com/@waline/emojis@1.1.0/bmoji","https://unpkg.com/@waline/emojis@1.1.0/qq","https://unpkg.com/@waline/emojis@1.1.0/tieba","https://unpkg.com/@waline/emojis@1.1.0/weibo","https://unpkg.com/@waline/emojis@1.1.0/tw-emoji","https://unpkg.com/@waline/emojis@1.1.0/tw-body","https://unpkg.com/@waline/emojis@1.1.0/tw-food","https://unpkg.com/@waline/emojis@1.1.0/tw-natural","https://unpkg.com/@waline/emojis@1.1.0/tw-object","https://unpkg.com/@waline/emojis@1.1.0/tw-symbol","https://unpkg.com/@waline/emojis@1.1.0/tw-people","https://unpkg.com/@waline/emojis@1.1.0/tw-sport","https://unpkg.com/@waline/emojis@1.1.0/tw-time","https://unpkg.com/@waline/emojis@1.1.0/tw-travel","https://unpkg.com/@waline/emojis@1.1.0/tw-weather","https://unpkg.com/@waline/emojis@1.1.0/tw-flag"]}))
+  }
+
+  if (typeof Waline === 'object') initWaline()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css').then(() => {
+      getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js').then(initWaline)
+    })
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
