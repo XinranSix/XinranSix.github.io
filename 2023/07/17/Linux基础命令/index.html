@@ -1,0 +1,677 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux基础命令 | Yao J</title><meta name="author" content="Yao J"><meta name="copyright" content="Yao J"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux 的常用命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux基础命令">
+<meta property="og:url" content="http://example.com/2023/07/17/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Yao J">
+<meta property="og:description" content="Linux 的常用命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/XinranSix/Computer-Graphics/assets/62458905/31c5d5cc-3905-470a-a03c-13f3b0598fe9">
+<meta property="article:published_time" content="2023-07-17T06:12:38.000Z">
+<meta property="article:modified_time" content="2023-07-17T06:14:17.051Z">
+<meta property="article:author" content="Yao J">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="命令">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/XinranSix/Computer-Graphics/assets/62458905/31c5d5cc-3905-470a-a03c-13f3b0598fe9"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/2023/07/17/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章已","messageNext":"天未更新，文字内容或许已不再使用于现在的情况。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux基础命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-17 14:14:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">35</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://github.com/XinranSix/Computer-Graphics/assets/62458905/31c5d5cc-3905-470a-a03c-13f3b0598fe9')"><nav id="nav"><span id="blog-info"><a href="/" title="Yao J"><span class="site-name">Yao J</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux基础命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-17T06:12:38.000Z" title="发表于 2023-07-17 14:12:38">2023-07-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-17T06:14:17.051Z" title="更新于 2023-07-17 14:14:17">2023-07-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="Linux基础命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="waline-pageview-count" data-path="/2023/07/17/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/07/17/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/#post-comment"><span class="waline-comment-count" data-path="/2023/07/17/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="终端提示符">终端提示符</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yaojie@yaojie-virtual-machine:~$ </span><br><span class="line">yaojie: 用户名</span><br><span class="line">yaojie-virtual-machine: 主机名</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~: 家目录</span><br><span class="line">/: 根目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$: 普通用户权限</span><br><span class="line"><span class="comment">#: 管理员权限</span></span><br></pre></td></tr></table></figure>
+<h2 id="命令帮助信息">命令帮助信息</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令 --help</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：并不是所有的命令都有帮助信息。</p>
+</blockquote>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/ddd040ff-025a-4674-b58a-cf33e3184e24" alt="image"></p>
+<h3 id="man-命令">man 命令</h3>
+<p>man 命令是 linux 提供的帮助手册，可以查询命令、函数或者特殊的文件，这个手册有很多个章节。</p>
+<p>第一章中放的是命令的帮助信息。</p>
+<p>第二章中放的是系统调用。</p>
+<p>第三章中放的是库函数的帮助信息。</p>
+<p>使用 <code>man man</code> 查看 man 命令的帮助信息：</p>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/3ded45a7-de5d-41f8-9b3d-3f59fa945f3a" alt="image"></p>
+<p>用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">man 章节 查找信息</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">man 1 <span class="built_in">ls</span> 或者 man <span class="built_in">ls</span></span><br><span class="line">man 2 open</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/262e202c-0379-4fb5-8945-6a2d8fe1e02e" alt="image"></p>
+<h2 id="命令常用的技巧">命令常用的技巧</h2>
+<h3 id="自动补全">自动补全</h3>
+<p>输入命令的一部分，按 <kbd>tab</kbd> 键，会可以自动补全命令，如果匹配到了多个命令，按两次 <kbd>tab</kbd>，会在终端打印所有可用的命令。</p>
+<p>文件和目录也可以使用如上操作进行补全。</p>
+<h3 id="历史命令">历史命令</h3>
+<p>可以通过<strong>上下方向键</strong>将以前输入过的命令调出来，敲回车再次执行和做修改后执行。</p>
+<h3 id="重定向">重定向</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">命令 &gt; 目的文件 <span class="comment"># 先清空原本文件内容，然后将命令的输出结果写入文件</span></span><br><span class="line">命令 &gt;&gt; 目的文件 <span class="comment"># 以追加的方式将命令的输出结果写入文件</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/3acef1f4-1c41-4965-8d40-607529f00ddf" alt="image"></p>
+<h3 id="管道">管道</h3>
+<p>将一个程序的输出作为另外一个程序的输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> --<span class="built_in">help</span> | more <span class="comment"># 以每页的方式查看ls命令的帮助信息</span></span><br><span class="line"><span class="built_in">ls</span> /etc | <span class="built_in">wc</span> w <span class="comment"># 统计根目录下的etc目录中的文件数</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/7e3f7021-9de4-4573-af31-55793882d017" alt="image"></p>
+<h2 id="ls"><code>ls</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="comment">#查看当前目录下的文件名</span></span><br><span class="line"><span class="built_in">ls</span> 目录名 <span class="comment">#查看指定目录下的文件名</span></span><br><span class="line"><span class="built_in">ls</span> / <span class="comment">#查看根目录下的文件名</span></span><br><span class="line"><span class="built_in">ls</span> -a <span class="comment">#查看当前目录下的所有文件名，包括隐藏文件</span></span><br><span class="line"><span class="built_in">ls</span> -l <span class="comment">#查看当前目录下文件的详细信息（以列表的显示输出）</span></span><br><span class="line"><span class="built_in">ls</span> -al <span class="comment">#查看当前目录下所有文件的详细信息</span></span><br><span class="line"><span class="built_in">ls</span> -hl <span class="comment">#详细信息中的字节数可以带单位的显示</span></span><br><span class="line"><span class="built_in">ls</span> -d <span class="comment">#只列出目录</span></span><br><span class="line"><span class="built_in">ls</span> -r <span class="comment">#倒序显示文件和目录</span></span><br><span class="line"><span class="built_in">ls</span> -R <span class="comment">#递归显示目录中的所有文件和子目录</span></span><br><span class="line"><span class="built_in">ls</span> -t <span class="comment">#按修改时间排序，最新的文件在最前面</span></span><br><span class="line"><span class="built_in">ls</span> -A <span class="comment">#同 &quot;-a&quot;，但不列出 &quot;.&quot; 和 &quot;..&quot;</span></span><br><span class="line"><span class="built_in">ls</span> -F <span class="comment">#在列出的文件名称后加一符号；例如可执行档则加 &quot;*&quot;, 目录则加 &quot;/&quot;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/76da838f-68bb-420b-a4c9-328006bd8293" alt="image"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x  20 root root       4096  6月  7 15:12 .</span><br><span class="line">d：文件类型，linux里面不以后缀名作为文件类型的区分</span><br><span class="line">linux里面一共有其中文件类型bcd-lsp，linux里面一切皆文件</span><br><span class="line">    b：块设备文件</span><br><span class="line">    c：字符设备文件</span><br><span class="line">    d：目录文件</span><br><span class="line">    -：普通文件</span><br><span class="line">    l：软链接文件</span><br><span class="line">    s：套接字文件</span><br><span class="line">    p：管道文件</span><br><span class="line">rwxr-xr-x：文件权限，以三个为一组，分别表示用户主、用户组以及其他用户对文件的操作权限，r：读权限，w：写权限，x：可执行权限，如果是-，就表示没有这个权限</span><br><span class="line">20：链接文件的个数</span><br><span class="line">root：用户名</span><br><span class="line">root：用户组名</span><br><span class="line">4096：文件大小，默认以字节为单位</span><br><span class="line">6月  7 15:12：时间戳，文件的最后修改时间</span><br><span class="line">.：文件名</span><br></pre></td></tr></table></figure>
+<h2 id="tree"><code>tree</code></h2>
+<p>以树状结构显示目录信息。</p>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/978079cd-598c-4112-a24b-066af2214d7b" alt="image"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree -L 层数 <span class="comment"># 用于显示指定的层数</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/2e1ec8ac-82f4-47da-aef5-dd805bc7bf2e" alt="image"></p>
+<h2 id="clear"><code>clear</code></h2>
+<p>清屏。</p>
+<h2 id="cd"><code>cd</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 当前目录下的目录名 <span class="comment">#进入指定的目录</span></span><br><span class="line"><span class="built_in">cd</span> / <span class="comment">#进入根目录</span></span><br><span class="line"><span class="built_in">cd</span> ~ <span class="comment">#进入家目录</span></span><br><span class="line"><span class="built_in">cd</span> .. <span class="comment">#进入当前目录的上一级目录</span></span><br><span class="line"><span class="built_in">cd</span> - <span class="comment">#返回到上一次的路径</span></span><br></pre></td></tr></table></figure>
+<h2 id="pwd"><code>pwd</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span> <span class="comment">#显示当前路径的绝对路径</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/985fd7a6-2383-4925-acdd-87f6c853130c" alt="image"></p>
+<h2 id="cat"><code>cat</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> 文件名 <span class="comment">#显示文件的内容</span></span><br><span class="line"><span class="built_in">cat</span> -n 文件名 <span class="comment">#带行号的显示文件的内容</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/dbbfe639-6755-49ad-805d-74421f89b169" alt="image"></p>
+<h2 id="rm"><code>rm</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> 文件名 <span class="comment">#删除指定的文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf 目录文件名 <span class="comment">#删除指定的目录文件</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/e89c9545-9582-43a4-b8e8-086aa2cefcd2" alt="image"></p>
+<h2 id="cp"><code>cp</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> 文件名 目录名 <span class="comment">#将文件复制到目录中</span></span><br><span class="line"><span class="built_in">cp</span> 目录1 目录2 -a <span class="comment">#将目录1复制到目录2中</span></span><br><span class="line"><span class="built_in">cp</span> 文件名1 文件名2 <span class="comment">#如果文件2不是目录，则文件1复制一份为文件2，如果文件2存在且不是一个目录，则直接将内容替换传文件1的</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/590f369d-0beb-4655-b094-de8792eabef8" alt="image"></p>
+<h2 id="mv"><code>mv</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> 文件名 目录名 <span class="comment">#将文件移动到指定的目录中</span></span><br><span class="line"><span class="built_in">mv</span> 目录1 目录2 <span class="comment">#将目录1移动到目录2中</span></span><br><span class="line"><span class="built_in">mv</span> 文件1 文件2 <span class="comment">#如果文件2不存在，则功能为重命名</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/80561c5d-d60f-4225-b78d-5b3f749bcd70" alt="image"></p>
+<h2 id="mkdir"><code>mkdir</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> 目录名 <span class="comment">#创建一个目录文件</span></span><br><span class="line"><span class="built_in">mkdir</span> 目录1 目录2 ... <span class="comment">#创建多个目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p 目录1/目录2/目录3/... <span class="comment">#嵌套的创建多个文件</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/17230b5f-42b5-46aa-a898-d9fefbf90a42" alt="image"></p>
+<h2 id="touch"><code>touch</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> 文件名 <span class="comment">#创建一个文件</span></span><br><span class="line"><span class="comment">#注意：如果文件已经存在，则touch会修改当前时间的时间戳</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/c99c60dd-fb89-4b43-b4cf-5306b95aa39d" alt="image"></p>
+<p><code>touch</code> 创建的文件默认情况下是 664 的权限。</p>
+<h2 id="find"><code>find</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find 路径 -name 文件名 <span class="comment">#在指定的路径下查找指定的文件，会从指定路径下包括所有的子目录中寻找</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/22dc10dc-17c9-4171-b0ce-23ab6ea161be" alt="image"></p>
+<h2 id="grep"><code>grep</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep 查找信息 文件名  <span class="comment">#在指定的文件中查找指定的内容，将查找到的内容整行输出并高亮显示查找的内容</span></span><br><span class="line">grep 查找信息 文件名 -n <span class="comment">#在指定的文件中查找指定的内容，将查找到的内容整行且带行号输出并高亮显示查找的内容</span></span><br><span class="line">grep 查找信息 * -R -n <span class="comment">#从当前目录以及子目录中的文件中查找指定信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="ln"><code>ln</code></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> 源文件名 链接文件名 -s <span class="comment">#创建一个链接文件（类似windows的快捷方式）</span></span><br><span class="line"><span class="built_in">ln</span> 源文件名 链接文件名 -sfn <span class="comment">#创建一个链接文件，如果之前存在则覆盖（类似windows的快捷方式）</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>不管对源文件还是链接文件进行修改，双方的内容都会改变。</li>
+<li>如果删除链接文件，对源文件没有任何影响。</li>
+<li>如果删除源文件，则链接文件失效</li>
+<li>硬链接无需带任何选项</li>
+</ul>
+</blockquote>
+<h2 id="more-和-less"><code>more</code> 和 <code>less</code></h2>
+<h2 id="chmod"><code>chmod</code></h2>
+<p><code>Linux</code> 文件调用权限分为 3 级：文件拥有者（Owner）、用户组（Group）、其他用户（Other Users）。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/08/file-permissions-rwx.jpg" alt="img"></p>
+<p>只有文件所有者和超级用户可以修改文件或目录的权限。可以使用绝对模式（八进制数字模式），符号模式指定文件的权限。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/08/rwx-standard-unix-permission-bits.png" alt="img"></p>
+<p><strong>语法：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> [-cfvR] [--<span class="built_in">help</span>] [--version] mode file...</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong></p>
+<p><code>mode</code>：权限设定字串，格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ugoa...][[+-=][rwxX]...][,...]</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><code>u</code> 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个组的用户，<code>o</code> 表示其他以外的人，<code>a</code> 表示这三者皆是。</li>
+<li><code>+</code> 表示增加权限、<code>-</code> 表示取消权限、<code>=</code> 表示唯一设定权限。</li>
+<li><code>r</code> 表示可读取，<code>w</code> 表示可写入，<code>x</code> 表示可执行，<code>X</code> 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</li>
+</ul>
+<p>其他参数说明：</p>
+<ul>
+<li><code>-c</code>：若该文件权限确实已经更改，才显示其更改动作</li>
+<li><code>-f</code>：若该文件权限无法被更改也不要显示错误讯息</li>
+<li><code>-v</code> ：显示权限变更的详细资料</li>
+<li><code>-R</code>：对目前目录下的所有文件与子目录进行相同的权限变更(即以递归的方式逐个变更)</li>
+<li><code>--help</code>：显示辅助说明</li>
+<li><code>--version</code>：显示版本</li>
+</ul>
+<p><strong>符号模式：</strong></p>
+<p>使用符号模式可以设置多个项目：who（用户类型），operator（操作符）和 permission（权限），每个项目的设置可以用逗号隔开。 命令 <code>chmod</code> 将修改 who 指定的用户类型对文件的访问权限，用户类型由一个或者多个字母在 who 的位置来说明，如 who 的符号模式表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">who</th>
+<th style="text-align:center">用户类型</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>u</code></td>
+<td style="text-align:center">user</td>
+<td style="text-align:center">文件所有者</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>g</code></td>
+<td style="text-align:center">group</td>
+<td style="text-align:center">文件所有者所在组</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>o</code></td>
+<td style="text-align:center">others</td>
+<td style="text-align:center">所有其他用户</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>a</code></td>
+<td style="text-align:center">all</td>
+<td style="text-align:center">所有用户, 相当于 ugo</td>
+</tr>
+</tbody>
+</table>
+<p>operator 的符号模式表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operator</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>+</code></td>
+<td style="text-align:center">为指定的用户类型增加权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:center">去除指定用户类型的权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>=</code></td>
+<td style="text-align:center">设置指定用户权限的设置，即将用户类型的所有权限重新设置</td>
+</tr>
+</tbody>
+</table>
+<p>permission 的符号模式表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模式</th>
+<th style="text-align:center">名字</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>r</code></td>
+<td style="text-align:center">读</td>
+<td style="text-align:center">设置为可读权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>w</code></td>
+<td style="text-align:center">写</td>
+<td style="text-align:center">设置为可写权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>x</code></td>
+<td style="text-align:center">执行权限</td>
+<td style="text-align:center">设置为可执行权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>X</code></td>
+<td style="text-align:center">特殊执行权限</td>
+<td style="text-align:center">只有当文件为目录文件，或者其他类型的用户有可执行权限时，才将文件权限设置可执行</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>s</code></td>
+<td style="text-align:center">setuid/gid</td>
+<td style="text-align:center">当文件被执行时，根据 who 参数指定的用户类型设置文件的 setuid 或者 setgid 权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>t</code></td>
+<td style="text-align:center">粘贴位</td>
+<td style="text-align:center">设置粘贴位，只有超级用户可以设置该位，只有文件所有者 u 可以使用该位</td>
+</tr>
+</tbody>
+</table>
+<p><strong>八进制语法：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">#</th>
+<th style="text-align:center">权限</th>
+<th style="text-align:center">rwx</th>
+<th style="text-align:center">二进制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">读 + 写 + 执行</td>
+<td style="text-align:center">rwx</td>
+<td style="text-align:center">111</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">读 + 写</td>
+<td style="text-align:center">rw-</td>
+<td style="text-align:center">110</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">读 + 执行</td>
+<td style="text-align:center">r-x</td>
+<td style="text-align:center">101</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">r–</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">写 + 执行</td>
+<td style="text-align:center">-wx</td>
+<td style="text-align:center">011</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">只写</td>
+<td style="text-align:center">-w-</td>
+<td style="text-align:center">010</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">只执行</td>
+<td style="text-align:center">–x</td>
+<td style="text-align:center">001</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>实例：</strong></p>
+<p>将文件 file1.txt 设为所有人皆可读取：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> ugo+r file1.txt</span><br></pre></td></tr></table></figure>
+<p>将文件 file1.txt 设为所有人皆可读取：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> a+r file1.txt</span><br></pre></td></tr></table></figure>
+<p>将文件 file1.txt 与 file2.txt 设为该文件拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> ug+w,o-w file1.txt file2.txt</span><br></pre></td></tr></table></figure>
+<p>为 <a target="_blank" rel="noopener" href="http://ex1.py">ex1.py</a> 文件拥有者增加可执行权限:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ex1.py</span><br></pre></td></tr></table></figure>
+<p>将目前目录下的所有文件与子目录皆设为任何人可读取：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> -R a+r *</span><br></pre></td></tr></table></figure>
+<p>此外 <code>chmod</code> 也可以用数字来表示权限如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 777 file</span><br></pre></td></tr></table></figure>
+<p>语法为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> abc file</span><br></pre></td></tr></table></figure>
+<p>其中 a、b、c 各为一个数字，分别表示 User、Group、及 Other 的权限。</p>
+<p>r=4，w=2，x=1</p>
+<ul>
+<li>若要 rwx 属性则 4+2+1=7；</li>
+<li>若要 rw- 属性则 4+2=6；</li>
+<li>若要 r-x 属性则 4+1=5。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> a=rwx file</span><br></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 777 file</span><br></pre></td></tr></table></figure>
+<p>效果相同</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> ug=rwx,o=x file</span><br></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 771 file</span><br></pre></td></tr></table></figure>
+<p>效果相同</p>
+<p>若用 <code>chmod 4755 filename</code> 可使此程序具有 root 的权限。</p>
+<p><strong>更多说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>chmod a+r file</code></td>
+<td style="text-align:center">给file的所有用户增加读权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>chmod a-x file</code></td>
+<td style="text-align:center">删除file的所有用户的执行权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>chmod a+rw file</code></td>
+<td style="text-align:center">给file的所有用户增加读写权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>chmod +rwx file</code></td>
+<td style="text-align:center">给file的所有用户增加读写执行权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>chmod u=rw,go= file</code></td>
+<td style="text-align:center">对file的所有者设置读写权限，清空该用户组和其他用户对file的所有权限（空格代表无权限）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>chmod -R u+r,go-r docs</code></td>
+<td style="text-align:center">对目录docs和其子目录层次结构中的所有文件给用户增加读权限，而对用户组和其他用户删除读权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>chmod 664 file</code></td>
+<td style="text-align:center">对file的所有者和用户组设置读写权限, 为其其他用户设置读权限</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>chmod 0755 file</code></td>
+<td style="text-align:center">相当于<code>u=rwx (4+2+1),go=rx (4+1 &amp; 4+1)</code>。<code>0</code> 没有特殊模式。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>chmod 4755 file</code></td>
+<td style="text-align:center"><code>4</code>设置了设置用户ID位，剩下的相当于 u=rwx (4+2+1), go=rx (4+1 &amp; 4+1)。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>find path/ -type d -exec chmod a-x &#123;&#125; \;</code></td>
+<td style="text-align:center">删除可执行权限对 <code>path/</code> 以及其所有的目录（不包括文件）的所有用户，使用 <code>-type f</code> 匹配文件</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>find path/ -type d -exec chmod a+x &#123;&#125; \;</code></td>
+<td style="text-align:center">允许所有用户浏览或通过目录 <code>path/</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tar"><code>tar</code></h2>
+<h3 id="gzip-格式">gzip 格式</h3>
+<p><strong>压缩：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zcvf 压缩包包名 文件1 文件2 文件3 ...</span><br><span class="line"><span class="comment"># 注意：压缩包包名一般以.tar.gz作为后缀名</span></span><br></pre></td></tr></table></figure>
+<p><strong>解压：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf 压缩包包名</span><br><span class="line">tar zxvf 压缩包包名 -C 路径 <span class="comment">#解压到指定的路径</span></span><br></pre></td></tr></table></figure>
+<h3 id="bz2-格式">bz2 格式</h3>
+<p><strong>压缩：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar jcvf 压缩包包名 文件1 文件2 文件3 ... <span class="comment">#注意：压缩包包名一般以.tar.bz2作为后缀名</span></span><br></pre></td></tr></table></figure>
+<p><strong>解压：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar jxvf 压缩包包名</span><br><span class="line">tar jxvf 压缩包包名 -C 路径 解压到指定的路径</span><br></pre></td></tr></table></figure>
+<h2 id="vi">vi</h2>
+<h3 id="安装-vim（vi-升级版）">安装 vim（vi 升级版）</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim <span class="comment"># 安装 vim</span></span><br><span class="line">sudo apt install ctags <span class="comment"># 安装 ctags</span></span><br></pre></td></tr></table></figure>
+<h3 id="vi-的使用">vi 的使用</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi 文件名 <span class="comment">#在vi编辑器中打开或者创建一个文件，并将光标置于第一行行首</span></span><br><span class="line">vi +n 文件名 <span class="comment">#打开存在文件，并将光标置于第n行行首</span></span><br></pre></td></tr></table></figure>
+<h3 id="vi-的三种模式">vi 的三种模式</h3>
+<ol>
+<li>插入模式：这种模式可以直接编辑文档</li>
+<li>编辑模式：在编辑模式下可以执行一些命令，执行复制、剪切、粘贴等功能。</li>
+<li>命令模式：在此模式下可以保存文件，退出 vi.</li>
+</ol>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/fb96ef4d-e48e-4800-a772-2b5700375c15" alt="vim-vi-workmodel"></p>
+<blockquote>
+<p>编辑模式进入插入模式可使用 <code>i</code>、<code>a</code>、<code>o</code>、<code>a</code>，分别表示在光标处插入、在光标后一个字符插入，新开启一行插入以及替换一个字符。</p>
+</blockquote>
+<p><strong>命令模式下的一些指令：</strong></p>
+<ul>
+<li><code>w</code>：保存文件</li>
+<li><code>wq</code>：保存并退出</li>
+<li><code>x</code>：保存并退出</li>
+<li><code>q!</code>：强制退出</li>
+<li><code>w finename</code>：能成为 <code>filename</code></li>
+<li><code>set nu</code>：设置显示行号</li>
+<li><code>set nonu</code>：设置取消行号</li>
+</ul>
+<p><strong>编辑模式下的操作：</strong></p>
+<ul>
+<li><code>u</code>：撤销前面多次修改，<code>ctrl</code> 反撤销。</li>
+<li><code>[n]x</code>：删除光标后 n 个字符。</li>
+<li><code>[n]X</code>：删除光标前 n 个字符。</li>
+<li><code>[n]dd</code>：剪切从当前行开始的 n 行。</li>
+<li><code>[n]yy</code>：复制从当前行开始的 n 行（<code>y[n]y</code> 也行）。</li>
+<li><code>p</code>：粘贴。</li>
+<li><code>.</code>：执行上一次操作。</li>
+<li><kbd>shift</kbd> + <code>zz</code>：保存退出。</li>
+</ul>
+<p><strong>编辑模式下移动光标：</strong></p>
+<ul>
+<li><code>[n]G</code>：将光标移动到第 n 行开始处。</li>
+<li><code>G</code>：将光标移动到文件尾。</li>
+<li><code>gg</code>：将光标移动到文件开始处。</li>
+</ul>
+<p><strong>编辑模式下的查找：</strong></p>
+<ul>
+<li><code>/字符串</code>：从光标开始处向文件尾查找字符串，<code>n</code> 查找下一个，<code>N</code> 查找上一个，在要搜索的字符串之前加 <code>\c</code> 可以忽略大小写。</li>
+<li><code>n</code>：同一方向重复上一次查找命令。</li>
+<li><code>N</code>：反方向错误上一次查找命令。</li>
+</ul>
+<h2 id="GCC-编译器">GCC 编译器</h2>
+<p>程序的编译分为四个阶段： 由 <code>.c</code> 到可执行程序：</p>
+<ol>
+<li>预处理；</li>
+<li>编译；</li>
+<li>汇编；</li>
+<li>链接。</li>
+</ol>
+<p><strong>编译程序：</strong></p>
+<ol>
+<li>一步到位：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc hello.c <span class="comment"># 默认会生成一个名为a.out的可执行文件</span></span><br><span class="line">gcc hello.c -o hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello world\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/XinranSix/docs/assets/62458905/940f33cf-8714-47ba-9475-416d87e4e98b" alt="image"></p>
+<ol start="2">
+<li>分步骤完成：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gcc -E hello.c -o hello.i <span class="comment">#1、预处理</span></span><br><span class="line">gcc -S hello.i -o hello.s <span class="comment">#2、编译</span></span><br><span class="line">gcc -c hello.s -o hello.o <span class="comment">#3、汇编</span></span><br><span class="line">gcc hello.o –o hello <span class="comment">#4、链接</span></span><br></pre></td></tr></table></figure>
+<h2 id="用户操作">用户操作</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd 用户名</span><br><span class="line">userdel 用户名</span><br></pre></td></tr></table></figure>
+<h2 id="其它">其它</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> </span><br><span class="line">whereis</span><br><span class="line">locate</span><br></pre></td></tr></table></figure>
+<p><code>PWD</code> 是一个环境变量，记录了当前目录，引用时要：<code>$PWD</code></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-vim.html">Linux vi/vim | 菜鸟教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-chmod.html">Linux chmod命令 | 菜鸟教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mouseleo/p/13326837.html">让Vim查找字符忽略大小写  | 博客园</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Yao J</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/07/17/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">http://example.com/2023/07/17/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Yao J</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/%E5%91%BD%E4%BB%A4/">命令</a></div><div class="post_share"><div class="social-share" data-image="https://github.com/XinranSix/Computer-Graphics/assets/62458905/31c5d5cc-3905-470a-a03c-13f3b0598fe9" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/07/16/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="位运算"><img class="cover" src="https://github.com/XinranSix/Computer-Graphics/assets/62458905/bf50fc33-f3e5-4138-88c6-76261468e5b5" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">位运算</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">终端提示符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9%E4%BF%A1%E6%81%AF"><span class="toc-number">2.</span> <span class="toc-text">命令帮助信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#man-%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.</span> <span class="toc-text">man 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="toc-number">3.</span> <span class="toc-text">命令常用的技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="toc-number">3.1.</span> <span class="toc-text">自动补全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4"><span class="toc-number">3.2.</span> <span class="toc-text">历史命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">3.3.</span> <span class="toc-text">重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E9%81%93"><span class="toc-number">3.4.</span> <span class="toc-text">管道</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ls"><span class="toc-number">4.</span> <span class="toc-text">ls</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tree"><span class="toc-number">5.</span> <span class="toc-text">tree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#clear"><span class="toc-number">6.</span> <span class="toc-text">clear</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cd"><span class="toc-number">7.</span> <span class="toc-text">cd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pwd"><span class="toc-number">8.</span> <span class="toc-text">pwd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cat"><span class="toc-number">9.</span> <span class="toc-text">cat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rm"><span class="toc-number">10.</span> <span class="toc-text">rm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cp"><span class="toc-number">11.</span> <span class="toc-text">cp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mv"><span class="toc-number">12.</span> <span class="toc-text">mv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mkdir"><span class="toc-number">13.</span> <span class="toc-text">mkdir</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#touch"><span class="toc-number">14.</span> <span class="toc-text">touch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find"><span class="toc-number">15.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-number">16.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ln"><span class="toc-number">17.</span> <span class="toc-text">ln</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#more-%E5%92%8C-less"><span class="toc-number">18.</span> <span class="toc-text">more 和 less</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chmod"><span class="toc-number">19.</span> <span class="toc-text">chmod</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tar"><span class="toc-number">20.</span> <span class="toc-text">tar</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gzip-%E6%A0%BC%E5%BC%8F"><span class="toc-number">20.1.</span> <span class="toc-text">gzip 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bz2-%E6%A0%BC%E5%BC%8F"><span class="toc-number">20.2.</span> <span class="toc-text">bz2 格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi"><span class="toc-number">21.</span> <span class="toc-text">vi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-vim%EF%BC%88vi-%E5%8D%87%E7%BA%A7%E7%89%88%EF%BC%89"><span class="toc-number">21.1.</span> <span class="toc-text">安装 vim（vi 升级版）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vi-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">21.2.</span> <span class="toc-text">vi 的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vi-%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">21.3.</span> <span class="toc-text">vi 的三种模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GCC-%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-number">22.</span> <span class="toc-text">GCC 编译器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C"><span class="toc-number">23.</span> <span class="toc-text">用户操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">24.</span> <span class="toc-text">其它</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">25.</span> <span class="toc-text">参考</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://github.com/XinranSix/Computer-Graphics/assets/62458905/31c5d5cc-3905-470a-a03c-13f3b0598fe9')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Yao J</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://xinransix.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://comment-umber.vercel.app/',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, {"emoji":["https://unpkg.com/@waline/emojis@1.1.0/alus","https://unpkg.com/@waline/emojis@1.1.0/bilibili","https://unpkg.com/@waline/emojis@1.1.0/bmoji","https://unpkg.com/@waline/emojis@1.1.0/qq","https://unpkg.com/@waline/emojis@1.1.0/tieba","https://unpkg.com/@waline/emojis@1.1.0/weibo","https://unpkg.com/@waline/emojis@1.1.0/tw-emoji","https://unpkg.com/@waline/emojis@1.1.0/tw-body","https://unpkg.com/@waline/emojis@1.1.0/tw-food","https://unpkg.com/@waline/emojis@1.1.0/tw-natural","https://unpkg.com/@waline/emojis@1.1.0/tw-object","https://unpkg.com/@waline/emojis@1.1.0/tw-symbol","https://unpkg.com/@waline/emojis@1.1.0/tw-people","https://unpkg.com/@waline/emojis@1.1.0/tw-sport","https://unpkg.com/@waline/emojis@1.1.0/tw-time","https://unpkg.com/@waline/emojis@1.1.0/tw-travel","https://unpkg.com/@waline/emojis@1.1.0/tw-weather","https://unpkg.com/@waline/emojis@1.1.0/tw-flag"]}))
+  }
+
+  if (typeof Waline === 'object') initWaline()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css').then(() => {
+      getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js').then(initWaline)
+    })
+  }
+}
+
+if ('Waline' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
